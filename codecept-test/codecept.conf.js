@@ -5,6 +5,10 @@ exports.config = {
     Puppeteer: {
       url: 'http://localhost:3000',
       show: true
+    },
+  //Other helpers
+     SelectorHelper: {
+      require: './selectorHelper.js',
     }
   },
   include: {

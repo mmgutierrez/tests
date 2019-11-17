@@ -8,7 +8,8 @@ exports.config = {
     }
   },
   include: {
-    I: '../steps_file.js'
+    I: '../steps_file.js', 
+    EntitiesPage: './pages/entitites-page.js'
   },
   bootstrap: null,
   mocha: {},

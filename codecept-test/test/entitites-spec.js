@@ -1,39 +1,35 @@
-
 Feature('Entities');
+
+//Text extrictly related to the text, however it can be moved to a sepparte file for reuse.
+const existingAnnotation = 'very important'
+const newAnnotation = 'Label1'
 
 Before((I) => { 
     I.amOnPage('/');
   });
 
-xScenario('Should display annotated entity', (I) => {
-    I.click('textarea ~ div span[style]');
+Scenario('Should display annotated entity', (I, EntitiesPage) => {
+    I.click(EntitiesPage.annotatedText)
 
-    I.see('graphical user interface (very important)', 'section > div > div > span')
+    I.see(existingAnnotation, EntitiesPage.annotationLabel)
 });
 
-xScenario('Should change entity annotation', (I) => {
-    //Select text and add annotation
-    I.doubleClick('Venture', 'textarea ~ div span');
-    I.click('[type="text"]')
-    I.appendField('[type="text"]', 'Label1');
-    I.click({ css: 'button' })
+Scenario('Should add entity annotation', (I, EntitiesPage) => { //Not possible to change annotation, only add.
+    EntitiesPage.addAnnotationOnText(newAnnotation)
 
     //Verify annotation is displayed on text
-    I.click('Venture', 'textarea ~ div span')
-    I.see('Label1', 'section > div > div > span')
+    I.click(EntitiesPage.annotatedText)
+    I.see(newAnnotation, EntitiesPage.annotationLabel)
 });
 
 Scenario('Should delete entity annotation', (I) => {
-    //Select text and add annotation
-    pause()
-    I.doubleClick('Venture', 'textarea ~ div span');
-    I.click('[type="text"]')
-    I.appendField('[type="text"]', 'Label1');
-    I.click({ css: 'button' })
-    I.click('Venture', 'textarea ~ div span')
+    EntitiesPage.addAnnotationOnText(newAnnotation)
+
+    //Click on newly added annotation
+    I.click(EntitiesPage.selectedText)
 
     //Delete annotation
-    I.click('[aria-label="Delete"]')
+    I.click(EntitiesPage.deleteAnnotationButton)
 
-    I.dontSee('Label1', 'section > div > div > span')
+    I.dontSee(newAnnotation, EntitiesPage.annotationLabel)
 })

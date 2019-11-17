@@ -1,6 +1,6 @@
 Feature('Entities');
 
-//Text extrictly related to the text, however it can be moved to a sepparte file for reuse.
+//Text extrictly related to the test, however it can be moved to a sepparte file for reuse.
 const existingAnnotation = 'very important'
 const newAnnotation = 'Label1'
 

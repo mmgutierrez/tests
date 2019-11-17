@@ -18,16 +18,16 @@ Scenario('Should add entity annotation', (I, EntitiesPage) => { //Not possible t
     EntitiesPage.addAnnotationOnText(newAnnotation)
 
     //Verify annotation is displayed on text.
-    I.click(EntitiesPage.annotatedText)
+    I.click(EntitiesPage.lastAnnotation)
     I.see(newAnnotation, EntitiesPage.annotationLabel)
 });
 
-Scenario('Should delete entity annotation', (I) => {
+Scenario('Should delete entity annotation', (I, EntitiesPage) => {
     EntitiesPage.addAnnotationOnText(newAnnotation)
 
     //Click on tex with added annotation and remove the annotation.
-    I.click(EntitiesPage.selectedText)
+    I.click(EntitiesPage.lastAnnotation)
     I.click(EntitiesPage.deleteAnnotationButton)
 
-    I.dontSee(newAnnotation, EntitiesPage.annotationLabel)
+    I.dontSeeElement(EntitiesPage.annotationLabel)
 })

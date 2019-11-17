@@ -10,9 +10,15 @@ module.exports = {
   lastAnnotation: 'textarea ~ div:last-child > span[style]',
 
   addAnnotationOnText(annotationText){
-    I.setSelection(30, 38);
+    I.clearField(this.textField)
+    I.setSelection(30, 38)
     I.click(this.textField)
-    I.appendField(this.textField, annotationText);
+    I.appendField(this.textField, annotationText)
     I.click(this.addEntityButton)
+  },
+
+  removeLastAnnotation(){
+    I.click(this.lastAnnotation)
+    I.click(this.deleteAnnotationButton)
   }
 }

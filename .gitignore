@@ -1,3 +1,3 @@
 
-rasa-test/node_modules/
-test-cypress/node_modules/
+codecept-test/node_modules/
+*.png

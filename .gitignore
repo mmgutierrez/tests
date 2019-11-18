@@ -1,3 +1,2 @@
-
-codecept-test/node_modules/
 *.png
+rasa-test/node_modules/
